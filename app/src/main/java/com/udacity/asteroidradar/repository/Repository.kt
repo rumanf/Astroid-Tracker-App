@@ -20,31 +20,20 @@ import java.util.*
 class Repository (private val database: AsteroidDatabase) {
 
         /**
-         * A playlist of videos that can be shown on the screen.
+         * A list of asteroids that can be shown on the screen.
          */
         val asteroids: LiveData<List<Asteroid>> =
             Transformations.map(database.asteroidDao.getAsteroids()) {
-                it.asDomainModel()
-            }
+                it.asDomainModel()}
 
-        /**
-         * Refresh the videos stored in the offline cache.
-         *
-         * This function uses the IO dispatcher to ensure the database insert database operation
-         * happens on the IO dispatcher. By switching to the IO dispatcher using `withContext` this
-         * function is now safe to call from any thread including the Main thread.
-         *
-         * To actually load the videos for use, observe [videos]
-         */
         suspend fun refreshAsteroids() {
             withContext(Dispatchers.IO) {
 
-                val asteroidlistunparsed = Network.asteroids.getAsteroidList(getdates()[0], getdates()[1], Constants.API_KEY).await()
-                //val asteroidlistunparsed = Network.asteroids.getAsteroidList("2021-04-10", "2021-04-17", Constants.API_KEY).await()
+                val asteroidlistunparsed = Network.asteroids.getAsteroidList(getdates()[0], getdates()[1], Constants.API_KEY)
                val jsonResponse = JSONObject(asteroidlistunparsed)
-                val asteroidlist = parseAsteroidsJsonResult(jsonResponse)
+                val asteroidlistparsed = parseAsteroidsJsonResult(jsonResponse)
 
-                database.asteroidDao.insertAll(*asteroidlistunparsed.asDatabaseModel())
+                database.asteroidDao.insertAll(*asteroidlistparsed.asDatabaseModel())
 
             }
         }

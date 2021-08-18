@@ -24,9 +24,9 @@ interface NEOWService {
         @Query("start_date") startDate: String,
         @Query("end_date") endDate: String,
         @Query("api_key") apikey: String)
-   : Deferred<NetworkAsteroidContainer>
-//some issue with string vs container...
+   : String
 }
+
 // ADD SERVICE FOR THE PICTURE OF THE DAY API THING
 //https://api.nasa.gov/planetary/apod?api_key=FX1dnvbjT9ak9Aig57JLmcPHmDxcUSGkbRT0BeGC
 

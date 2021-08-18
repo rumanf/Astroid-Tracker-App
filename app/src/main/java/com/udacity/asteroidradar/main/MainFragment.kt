@@ -34,7 +34,7 @@ class MainFragment : Fragment() {
    // this will connect the info from the viewmodel to the adapter.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.asteroidlist.observe(viewLifecycleOwner, Observer<List<Asteroid>> { astroidlist ->
+        viewModel.asteroidlist.observe(viewLifecycleOwner, Observer{ astroidlist ->
             astroidlist?.apply {
                 viewModelAdapter?.data= astroidlist
             }

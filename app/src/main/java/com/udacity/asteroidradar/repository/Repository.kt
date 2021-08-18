@@ -40,11 +40,8 @@ class Repository (private val database: AsteroidDatabase) {
     private fun getdates(): Array<String> {
 
         val calendar = Calendar.getInstance()
-        val dateFormat = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            SimpleDateFormat(Constants.API_QUERY_DATE_FORMAT,Locale.getDefault())
-        } else {
-            TODO("VERSION.SDK_INT < N")
-        }
+        val dateFormat =SimpleDateFormat(Constants.API_QUERY_DATE_FORMAT,Locale.getDefault())
+
         val startdate = dateFormat.format(calendar.time)
         calendar.add(Calendar.DAY_OF_YEAR, Constants.DEFAULT_END_DATE_DAYS)
         val enddate = dateFormat.format(calendar.time)

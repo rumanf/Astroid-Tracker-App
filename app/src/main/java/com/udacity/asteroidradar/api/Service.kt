@@ -3,6 +3,7 @@ package com.udacity.asteroidradar.api
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.udacity.asteroidradar.Constants
 import com.udacity.asteroidradar.Constants.API_KEY
 import com.udacity.asteroidradar.Constants.BASE_URL
 import com.udacity.asteroidradar.PictureOfDay
@@ -20,15 +21,15 @@ import retrofit2.http.Query
 
 interface NEOWService {
     @GET("neo/rest/v1/feed")
-    fun getAsteroidList(
+    suspend fun getAsteroidList(
         @Query("start_date") startDate: String,
         @Query("end_date") endDate: String,
-        @Query("api_key") apikey: String)
+        @Query("api_key") key: String)
    : String
 }
 
 // ADD SERVICE FOR THE PICTURE OF THE DAY API THING
-//https://api.nasa.gov/planetary/apod?api_key=FX1dnvbjT9ak9Aig57JLmcPHmDxcUSGkbRT0BeGC
+//https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -36,7 +37,7 @@ private val moshi = Moshi.Builder()
 
 
 interface APODService {
-    @GET("planetary/apod"+ API_KEY)
+    @GET("planetary/apod"+ Constants.API_KEY)
    suspend fun getPictureOfTheDay():PictureOfDay
 }
 /**
@@ -54,10 +55,10 @@ object Network {
         .baseUrl(BASE_URL)
         .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+      //  .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
-    val asteroids = retrofit.create(NEOWService::class.java)
+    val asteroids : NEOWService by lazy {retrofit.create(NEOWService::class.java)}
 }
 object APODApi {
     private val retrofit = Retrofit.Builder()

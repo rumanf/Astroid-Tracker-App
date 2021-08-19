@@ -7,6 +7,7 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.squareup.picasso.Picasso
 
 @BindingAdapter("statusIcon")
 fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
@@ -46,13 +47,20 @@ fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
 
 
 @BindingAdapter("imageurl")
-fun bindImage (Imageview:ImageView,imgurl:String?){
+fun bindImage (Imgview:ImageView,imgurl:String?){
     imgurl?.let{
         val imgUri=imgurl.toUri().buildUpon().scheme("https").build()
-        Glide.with(Imageview.context)
-            .load(imgUri).fitCenter()
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .placeholder(R.drawable.placeholder_picture_of_day)
-            .into(Imageview)
+//        Glide.with(Imageview.context)
+//            .load(imgUri).fitCenter()
+//            .diskCacheStrategy(DiskCacheStrategy.ALL)
+//            .placeholder(R.drawable.placeholder_picture_of_day)
+//            .into(Imageview)
+
+    //adding picasso here
+    Picasso.with(Imgview.context)
+        .load(imgUri)
+        .placeholder(R.drawable.placeholder_picture_of_day)
+        .into(Imgview)
+
     }
 }

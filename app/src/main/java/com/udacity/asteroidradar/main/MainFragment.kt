@@ -32,14 +32,7 @@ class MainFragment : Fragment() {
      private var viewModelAdapter: RecyclerViewAdapter?=null
 
    // this will connect the info from the viewmodel to the adapter.
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.asteroidlist.observe(viewLifecycleOwner, Observer{ astroidlist ->
-            astroidlist?.apply {
-                viewModelAdapter?.data= astroidlist
-            }
-        })
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,6 +52,13 @@ class MainFragment : Fragment() {
         })
 
         binding.asteroidRecycler.adapter = viewModelAdapter
+        //update recycler data
+        viewModel.asteroidlist.observe(viewLifecycleOwner, Observer{ astroidlist ->
+            astroidlist?.apply {
+                viewModelAdapter?.data= astroidlist
+            }
+        })
+
 
         viewModel.navigateToSelectedAsteroid.observe(viewLifecycleOwner, Observer {
             if ( null != it ) {

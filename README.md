@@ -3,7 +3,7 @@ NOTE: PLEASE ADD YOUR API KEY TO THE CONSTANTS.KT FILE
 
 # Project Title
 
-Asteroid Radar App
+Asteroid Radar
 
 ## Getting Started
 

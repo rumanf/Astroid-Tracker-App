@@ -46,10 +46,10 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
 init {
     viewModelScope.launch {
         try {
-            _imageOfTheDay.value = APODApi.APODretrofitService.getPictureOfTheDay()
+            _imageOfTheDay?.value = APODApi?.APODretrofitService?.getPictureOfTheDay()
         } catch (e: Exception) {
-            _imageOfTheDay?.value=PictureOfDay("","","https://apod.nasa.gov/apod/image/2001/STSCI-H-p2006a-h-1024x614.jpg")
-            Log.i("message","imagetype is ${imageOfTheDay?.value?.mediaType},imageurlis ${imageOfTheDay?.value?.url}")
+            _imageOfTheDay?.value=PictureOfDay("image","This is the nasa image of the day","https://apod.nasa.gov/apod/image/2001/STSCI-H-p2006a-h-1024x614.jpg")
+           // Log.i("message","imagetype is ${imageOfTheDay?.value?.mediaType},imageurlis ${imageOfTheDay?.value?.url}")
 
         }
     }

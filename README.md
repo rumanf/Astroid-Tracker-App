@@ -14,7 +14,6 @@ The app is consists of two screens: A Main screen with a list of all the detecte
 This kind of app is one of the most usual in the real world, what you will learn by doing this are some of the most fundamental skills you need to know to work as a professional Android developer, as fetching data from the internet, saving data to a database, and display the data in a clear, clear, compelling UI.
 
 ### Screenshots
-
 ![Screenshot 1](starter/screenshots/screen_1.png)
 ![Screenshot 2](starter/screenshots/screen_2.png)
 ![Screenshot 3](starter/screenshots/screen_3.png)

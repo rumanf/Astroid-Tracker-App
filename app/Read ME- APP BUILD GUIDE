@@ -1,37 +1,4 @@
-BUILD STEPS AND STATUS
-
-make xml pages for fragments--- Complete
-set up navigation graph-complete
-set up navigation in activity main xml-complete
-add glide and setup picture of the day-COMPLEte
-media_type for picture of the day needs to be checked- COMPLETE
-set content description for picture of the day- COMPLETE
-setup databinding-complete
-setup viewmodelsMain-Complete
-setup livedatas
-build database-complete
-   build dao- COMPLETE
-Repository-Complete
-set up system to capture dates and update the date variable...
-permissions- COMPLETE
-XML for layout that needs to be inflated-COMPLETE
-recyclerview holder ,inflate etc-COMPLETE
-add binding adaptor to xml imageviews- COMPLETE for first fragment
-add binding adaptor to second fragment-complete
-complete second fragment-done
-need to vreate new viewmodel for next item-complete
-
-add clicking system to recycker view...
-need to figure out parsing without moshi for the network lib
-
-
-app to get data from internet and cache to database-DONE
-SETUP DATABINDING-DONE
-
-
-Download and parse the data from NASA NeoWS (Near Earth Object Web Service) API. As this response cannot be parsed directly with Moshi, we are providing a method to parse the data “manually” for you, it’s called parseAsteroidsJsonResult inside NetworkUtils class, we recommend trying for yourself before using this method or at least take a close look at it as it is an extremely common problem in real-world apps. For this response we need retrofit-converter-scalars instead of Moshi, you can check this dependency in build.gradle (app) file.
-
-not sure how to do this...Fetch and display the asteroids from the database and only fetch the asteroids from today onwards, ignoring asteroids before today. Also, display the asteroids sorted by date (Check SQLite documentation to get sorted data using a query).
+PLEASE Add your API KEY IN THE Constants File
 
 
 
@@ -46,12 +13,5 @@ not sure how to do this...Fetch and display the asteroids from the database and 
 
 
 
-Retrofit to download the data from the Internet.
-Moshi to convert the JSON data we are downloading to usable data in form of custom classes.
-RecyclerView to display the asteroids in a list.
 
-ViewModel
-Room
-LiveData
-Data Binding
-Navigation- DONE
+

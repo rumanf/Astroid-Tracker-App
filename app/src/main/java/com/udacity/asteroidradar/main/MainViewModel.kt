@@ -61,7 +61,11 @@ init {
     // this function will use coroutine and setup the update the repository
     fun setuprepository(){
         viewModelScope.launch {
-            repository.refreshAsteroids()}
+            try { repository.refreshAsteroids()}
+            catch (e: Exception) {
+                Log.i("message2","no internet baratna")
+
+            }            }
     }
 
     // this gets image of the day using the api service for APOD, the connections are in service.kt

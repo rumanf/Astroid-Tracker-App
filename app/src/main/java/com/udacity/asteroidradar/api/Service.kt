@@ -37,8 +37,11 @@ private val moshi = Moshi.Builder()
 
 
 interface APODService {
-    @GET("planetary/apod"+ Constants.API_KEY)
-   suspend fun getPictureOfTheDay():PictureOfDay
+    @GET("planetary/apod")
+   suspend fun getPictureOfTheDay(@Query("api_key")key: String=Constants.API_KEY)
+   :PictureOfDay
+
+
 }
 /**
  * Build the Moshi object that Retrofit will be using, making sure to add the Kotlin adapter for

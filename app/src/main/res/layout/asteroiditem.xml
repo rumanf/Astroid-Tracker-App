@@ -30,15 +30,23 @@
                 android:id="@+id/Astroid_Name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
+                android:hint="Asteroid name"
+                android:paddingTop="20dp"
                 android:text="@{asteroid.codename}"
-                android:hint="Asteroid name" />
+                android:textColor="#FFFFFF" />
 
             <ImageView
                 android:id="@+id/imageView"
                 statusIcon="@{asteroid.isPotentiallyHazardous}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/ic_status_potentially_hazardous" />
 
@@ -48,8 +56,12 @@
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Date"
+            android:paddingBottom="20dp"
             android:text="@{asteroid.closeApproachDate}"
-            android:hint="Date"/>
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 

@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar
 
 import android.media.Image
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
@@ -50,17 +51,17 @@ fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
 fun bindImage (Imgview:ImageView,imgurl:String?){
     imgurl?.let{
         val imgUri=imgurl.toUri().buildUpon().scheme("https").build()
-//        Glide.with(Imageview.context)
+    //adding picasso here and if statement to check for type
+    Picasso.with(Imgview.context)
+        .load(imgUri)
+        .placeholder(R.drawable.placeholder_picture_of_day)
+        .error(R.drawable.asteroid_safe)
+        .into(Imgview)
+        Log.i("this","$imgUri")
+    }
+    //        Glide.with(Imageview.context)
 //            .load(imgUri).fitCenter()
 //            .diskCacheStrategy(DiskCacheStrategy.ALL)
 //            .placeholder(R.drawable.placeholder_picture_of_day)
 //            .into(Imageview)
-
-    //adding picasso here
-    Picasso.with(Imgview.context)
-        .load(imgUri)
-        .placeholder(R.drawable.placeholder_picture_of_day)
-        .into(Imgview)
-
-    }
 }

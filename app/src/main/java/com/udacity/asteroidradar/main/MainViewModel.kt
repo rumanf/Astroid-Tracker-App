@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar.main
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.PictureOfDay
@@ -36,6 +37,7 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
     val imageOfTheDay: LiveData<PictureOfDay>
         get()=_imageOfTheDay
 
+    val picofdaychangable=MutableLiveData<PictureOfDay>()
     // made these nullable in case there is no internet... then initialized it.
 //     var picofdaytype:String?=""
 //     var picofdayurl:String?=""
@@ -45,9 +47,10 @@ init {
     viewModelScope.launch {
         try {
             _imageOfTheDay.value = APODApi.APODretrofitService.getPictureOfTheDay()
-
         } catch (e: Exception) {
-         //   _imageOfTheDay.value=PictureOfDay("","","https://apod.nasa.gov/apod/image/2001/STSCI-H-p2006a-h-1024x614.jpg")
+            _imageOfTheDay?.value=PictureOfDay("","","https://apod.nasa.gov/apod/image/2001/STSCI-H-p2006a-h-1024x614.jpg")
+            Log.i("message","imagetype is ${imageOfTheDay?.value?.mediaType},imageurlis ${imageOfTheDay?.value?.url}")
+
         }
     }
     setuprepository()

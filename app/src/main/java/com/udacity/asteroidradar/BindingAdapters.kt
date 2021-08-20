@@ -55,7 +55,7 @@ fun bindImage (Imgview:ImageView,imgurl:String?){
     Picasso.with(Imgview.context)
         .load(imgUri)
         .placeholder(R.drawable.placeholder_picture_of_day)
-        .error(R.drawable.asteroid_safe)
+        .error(R.drawable.placeholder_picture_of_day)
         .into(Imgview)
         Log.i("this","$imgUri")
     }

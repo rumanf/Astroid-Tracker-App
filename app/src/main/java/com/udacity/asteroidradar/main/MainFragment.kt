@@ -34,6 +34,7 @@ class MainFragment : Fragment() {
    // this will connect the info from the viewmodel to the adapter.
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,14 +52,13 @@ class MainFragment : Fragment() {
 
         })
 
-        binding.asteroidRecycler.adapter = viewModelAdapter
         //update recycler data
         viewModel.asteroidlist.observe(viewLifecycleOwner, Observer{ astroidlist ->
             astroidlist?.apply {
                 viewModelAdapter?.data= astroidlist
             }
         })
-
+        binding.asteroidRecycler.adapter = viewModelAdapter
 
         viewModel.navigateToSelectedAsteroid.observe(viewLifecycleOwner, Observer {
             if ( null != it ) {
@@ -68,7 +68,6 @@ class MainFragment : Fragment() {
                 viewModel.displayAsteroidDetailsComplete()
             }
         })
-
 //        binding.root.findViewById<RecyclerView>(R.id.asteroid_recycler).apply {
 //            layoutManager = LinearLayoutManager(context)
 //            adapter=viewModelAdapter
@@ -79,6 +78,8 @@ class MainFragment : Fragment() {
 
         return binding.root
     }
+
+
 
 
     ///function i can use to disply image of the day, but will try binding adapter first

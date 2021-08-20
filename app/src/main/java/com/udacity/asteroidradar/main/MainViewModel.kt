@@ -44,16 +44,16 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
 //    var picofdaytitle:String?=""
 
 init {
+    setuprepository()
     viewModelScope.launch {
         try {
             _imageOfTheDay?.value = APODApi?.APODretrofitService?.getPictureOfTheDay()
         } catch (e: Exception) {
-            _imageOfTheDay?.value=PictureOfDay("image","This is the nasa image of the day","https://apod.nasa.gov/apod/image/2001/STSCI-H-p2006a-h-1024x614.jpg")
-           // Log.i("message","imagetype is ${imageOfTheDay?.value?.mediaType},imageurlis ${imageOfTheDay?.value?.url}")
+            _imageOfTheDay?.value=PictureOfDay("image","This is the nasa image of the day","IMG")
+            Log.i("message1","no internet for image")
 
         }
     }
-    setuprepository()
 }
 
     val asteroidlist = repository.asteroids
@@ -63,7 +63,7 @@ init {
         viewModelScope.launch {
             try { repository.refreshAsteroids()}
             catch (e: Exception) {
-                Log.i("message2","no internet baratna")
+                Log.i("message2","no internet Repo")
 
             }            }
     }

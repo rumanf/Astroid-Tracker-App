@@ -8,6 +8,9 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.squareup.picasso.Callback
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 
 @BindingAdapter("statusIcon")
@@ -51,17 +54,20 @@ fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
 fun bindImage (Imgview:ImageView,imgurl:String?){
     imgurl?.let{
         val imgUri=imgurl.toUri().buildUpon().scheme("https").build()
-    //adding picasso here and if statement to check for type
-    Picasso.with(Imgview.context)
-        .load(imgUri)
-        .placeholder(R.drawable.placeholder_picture_of_day)
-        .error(R.drawable.placeholder_picture_of_day)
-        .into(Imgview)
-        Log.i("this","$imgUri")
+
+if (imgurl=="IMG"){
+    Log.i("message3","No internet")
+        Picasso.with(Imgview.context)
+            .load(R.drawable.dwg)
+//            .placeholder(R.drawable.dwg)
+//            .error(R.drawable.dwg)
+            .networkPolicy(NetworkPolicy.OFFLINE)
+            .into(Imgview)
     }
-    //        Glide.with(Imageview.context)
-//            .load(imgUri).fitCenter()
-//            .diskCacheStrategy(DiskCacheStrategy.ALL)
-//            .placeholder(R.drawable.placeholder_picture_of_day)
-//            .into(Imageview)
-}
+    else {
+    Log.i("message4","Has internet $imgUri")
+        Picasso.with(Imgview.context)
+    .load(imgUri)
+  //  .networkPolicy(NetworkPolicy.OFFLINE)
+    .into(Imgview)
+}    }}

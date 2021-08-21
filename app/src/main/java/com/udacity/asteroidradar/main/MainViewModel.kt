@@ -89,13 +89,7 @@ init {
 //////////////////////////////////////////////////////////////////
 
 
-    /**
-     * init{} is called immediately when this ViewModel is created.
-     */
 
-    /**
-     * Factory for constructing ViewModel with parameter
-     */
     class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MainViewModel::class.java)) {

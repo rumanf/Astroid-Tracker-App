@@ -51,14 +51,14 @@ class MainFragment : Fragment() {
             //val packageManager = context?.packageManager ?: return@AsteroidClick
 
         })
-
+        binding.asteroidRecycler.adapter = viewModelAdapter
         //update recycler data
         viewModel.asteroidlist.observe(viewLifecycleOwner, Observer{ astroidlist ->
             astroidlist?.apply {
                 viewModelAdapter?.data= astroidlist
             }
         })
-        binding.asteroidRecycler.adapter = viewModelAdapter
+
 
         viewModel.navigateToSelectedAsteroid.observe(viewLifecycleOwner, Observer {
             if ( null != it ) {

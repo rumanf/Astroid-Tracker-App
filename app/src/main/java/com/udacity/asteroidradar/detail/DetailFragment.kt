@@ -20,6 +20,13 @@ class DetailFragment : Fragment() {
 
         binding.asteroid = asteroid
 
+        //setting content description
+        binding.absoluteMagnitude.contentDescription="The absolute magnitude is ${asteroid.absoluteMagnitude} au"
+        binding.relativeVelocity.contentDescription="The Relative Velocity is ${asteroid.relativeVelocity} kilometers per second"
+        binding.estimatedDiameter.contentDescription="The Estimated Diameter is ${asteroid.estimatedDiameter} kilometers"
+        binding.distanceFromEarth.contentDescription="The Distance from Earth is ${asteroid.distanceFromEarth} Au"
+
+
         binding.helpButton.setOnClickListener {
             displayAstronomicalUnitExplanationDialog()
         }

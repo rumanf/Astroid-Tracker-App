@@ -43,6 +43,7 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
 //     var picofdayurl:String?=""
 //    var picofdaytitle:String?=""
 
+
 init {
     setuprepository()
     viewModelScope.launch {
